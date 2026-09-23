@@ -1,331 +1,722 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>کترینگ غذای دریاچه</title>
+  <title>کترینگ غذای دریاچه</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- فونت -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-<style>
-*{
-  box-sizing:border-box;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  font-family:Vazirmatn,Tahoma,sans-serif;
-  background:#f5f0e7;
-  color:#26352c;
-}
+    body {
+      margin: 0;
+      font-family: "Vazirmatn", Tahoma, sans-serif;
+      background: #f5f0e7;
+      color: #26352c;
+    }
 
-.hero{
-  background:linear-gradient(135deg,#123c2d,#285b45);
-  color:white;
-  padding:38px 20px 42px;
-  text-align:center;
-}
+    /* هدر */
+    .hero {
+      background: linear-gradient(135deg, #123c2d, #285b45);
+      color: white;
+      padding: 38px 20px 42px;
+      text-align: center;
+    }
 
-.logo{
-  width:88px;
-  height:88px;
-  margin:0 auto 15px;
-  border:2px solid #d6b678;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  font-weight:800;
-  color:#d6b678;
-}
+    .logo {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 15px;
+      border: 2px solid #d6b678;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 38px;
+      font-weight: 800;
+      color: #d6b678;
+    }
 
-.hero h1{
-  margin:0;
-  font-size:30px;
-  font-weight:800;
-}
+    .hero h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 800;
+    }
 
-.hero p{
-  margin:9px 0 0;
-  color:#f0dfb7;
-  font-size:16px;
-}
+    .hero p {
+      margin: 9px 0 0;
+      color: #f0dfb7;
+      font-size: 16px;
+    }
 
-main{
-  max-width:1100px;
-  margin:auto;
-  padding:25px 16px 45px;
-}
+    /* محتوای اصلی */
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 25px 16px 45px;
+    }
 
-.title{
-  text-align:center;
-  margin:0 0 18px;
-  font-size:25px;
-  color:#183b2b;
-}
+    .title {
+      text-align: center;
+      margin: 0 0 18px;
+      font-size: 25px;
+      color: #183b2b;
+    }
 
-.categories{
-  display:flex;
-  gap:9px;
-  overflow-x:auto;
-  padding:4px 2px 15px;
-  scrollbar-width:none;
-}
+    /* دسته بندی */
+    .categories {
+      display: flex;
+      gap: 9px;
+      overflow-x: auto;
+      padding: 4px 2px 15px;
+      scrollbar-width: none;
+    }
 
-.categories::-webkit-scrollbar{
-  display:none;
-}
+    .categories::-webkit-scrollbar {
+      display: none;
+    }
 
-.cat{
-  flex:0 0 auto;
-  border:1px solid #d5c9b4;
-  background:#fffdf8;
-  color:#31503d;
-  padding:10px 17px;
-  border-radius:25px;
-  font-family:inherit;
-  font-size:14px;
-  cursor:pointer;
-}
+    .cat {
+      flex: 0 0 auto;
+      border: 1px solid #d5c9b4;
+      background: #fffdf8;
+      color: #31503d;
+      padding: 10px 17px;
+      border-radius: 25px;
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
 
-.cat.active{
-  background:#183b2b;
-  color:white;
-  border-color:#183b2b;
-}
+    .cat:hover {
+      transform: translateY(-1px);
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:16px;
-}
+    .cat.active {
+      background: #183b2b;
+      color: white;
+      border-color: #183b2b;
+    }
 
-.card{
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
-  border:1px solid #eee5d7;
-}
+    /* کارت غذاها */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(250px, 1fr)
+      );
+      gap: 16px;
+    }
 
-.photo{
-  width:100%;
-  height:180px;
-  background:linear-gradient(135deg,#e8dfcf,#f7f3eb);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#9b8d76;
-  font-size:42px;
-}
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eee5d7;
+    }
 
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .photo {
+      width: 100%;
+      height: 180px;
+      background: linear-gradient(
+        135deg,
+        #e8dfcf,
+        #f7f3eb
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9b8d76;
+      font-size: 42px;
+      overflow: hidden;
+    }
 
-.content{
-  padding:17px;
-}
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-.card h3{
-  margin:0 0 7px;
-  color:#183b2b;
-  font-size:19px;
-}
+    .content {
+      padding: 17px;
+    }
 
-.desc{
-  color:#777;
-  font-size:13px;
-  line-height:1.8;
-  min-height:24px;
-}
+    .card h3 {
+      margin: 0 0 7px;
+      color: #183b2b;
+      font-size: 19px;
+      font-weight: 700;
+    }
 
-.info{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:12px;
-}
+    .desc {
+      color: #777;
+      font-size: 13px;
+      line-height: 1.8;
+      min-height: 24px;
+    }
 
-.price{
-  color:#a87932;
-  font-weight:800;
-  font-size:17px;
-}
+    .info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 12px;
+    }
 
-.day{
-  color:#666;
-  font-size:12px;
-}
+    .price {
+      color: #a87932;
+      font-weight: 800;
+      font-size: 17px;
+    }
 
-.empty{
-  text-align:center;
-  padding:40px 15px;
-  color:#777;
-}
+    .day {
+      color: #666;
+      font-size: 12px;
+    }
 
-footer{
-  text-align:center;
-  padding:28px 15px;
-  background:#183b2b;
-  color:#ddd;
-  font-size:13px;
-  line-height:1.9;
-}
+    /* وضعیت‌ها */
+    .empty,
+    .loading,
+    .error {
+      text-align: center;
+      padding: 40px 15px;
+      color: #777;
+      grid-column: 1 / -1;
+    }
 
-.loading{
-  text-align:center;
-  padding:35px;
-  color:#777;
-}
-</style>
+    .error {
+      color: #8b4b3f;
+    }
+
+    /* فوتر */
+    footer {
+      text-align: center;
+      padding: 28px 15px;
+      background: #183b2b;
+      color: #ddd;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    /* موبایل */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 30px 15px 34px;
+      }
+
+      .hero h1 {
+        font-size: 25px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .logo {
+        width: 78px;
+        height: 78px;
+        font-size: 32px;
+      }
+
+      main {
+        padding: 22px 12px 35px;
+      }
+
+      .title {
+        font-size: 22px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo {
+        height: 190px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <div class="logo">د</div>
-  <h1>کترینگ غذای دریاچه</h1>
-  <p>طعم اصیل غذای ایرانی</p>
-</section>
+  <!-- هدر -->
+  <section class="hero">
+    <div class="logo">د</div>
 
-<main>
+    <h1>کترینگ غذای دریاچه</h1>
 
-  <h2 class="title">منوی غذا</h2>
+    <p>طعم اصیل غذای ایرانی</p>
+  </section>
 
-  <div id="categories" class="categories"></div>
 
-  <div id="menu" class="grid">
-    <div class="loading">در حال دریافت منو...</div>
-  </div>
+  <!-- محتوای سایت -->
+  <main>
 
-</main>
+    <h2 class="title">منوی غذا</h2>
 
-<footer>
-  برای سفارش با ما در تماس باشید<br>
-  کترینگ غذای دریاچه
-</footer>
+    <div
+      id="categories"
+      class="categories"
+    ></div>
 
-<script>
+    <div
+      id="menu"
+      class="grid"
+    >
+      <div class="loading">
+        در حال دریافت منو...
+      </div>
+    </div>
 
-const DATA_URL =
-"https://docs.google.com/spreadsheets/d/1K0kcWJJbYRab9y5O6lo9kKE2F8r8V6BDffgaKVHpvWk/gviz/tq?tqx=out:json";/spreadsheets/d/1K0kcWJJbYRab9y5O6lo9kKE2F8r8V6BDffgaKVHpvWk/gviz/tq?tqx=out:json&sheet=Sheet1";
+  </main>
 
-const demo = [
-  {
-    category:"خورشت",
-    name:"قورمه‌سبزی",
-    desc:"همراه برنج ایرانی",
-    price:"—",
-    image:"",
-    day:""
-  },
-  {
-    category:"خورشت",
-    name:"قیمه",
-    desc:"همراه برنج ایرانی",
-    price:"—",
-    image:"",
-    day:""
-  },
-  {
-    category:"چلو و غذا",
-    name:"کباب کوبیده",
-    desc:"دو سیخ کباب با برنج",
-    price:"—",
-    image:"",
-    day:""
-  }
-];
 
-let items = [];
-let currentCategory = "همه";
+  <!-- فوتر -->
+  <footer>
+    برای سفارش با ما در تماس باشید
+    <br>
+    کترینگ غذای دریاچه
+  </footer>
 
-const categoriesEl = document.getElementById("categories");
-const menuEl = document.getElementById("menu");
 
-function escapeHTML(value){
-  return String(value ?? "")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-}
+  <script>
 
-function renderCategories(){
+    /*
+      آدرس Google Sheets
 
-  const categories = [
-    "همه",
-    ...new Set(
-      items
-        .map(item => item.category)
-        .filter(Boolean)
-    )
-  ];
+      ستون‌ها:
+      A = category
+      B = name
+      C = desc
+      D = price
+      E = image
+      F = day
+    */
 
-  categoriesEl.innerHTML = "";
+    const DATA_URL =
+      "https://docs.google.com/spreadsheets/d/1K0kcWJJbYRab9y5O6lo9kKE2F8r8V6BDffgaKVHpvWk/gviz/tq?tqx=out:json&sheet=Sheet1";
 
-  categories.forEach(category => {
 
-    const button = document.createElement("button");
+    /* عناصر صفحه */
+    const categoriesEl =
+      document.getElementById("categories");
 
-    button.className =
-      "cat" +
-      (category === currentCategory ? " active" : "");
+    const menuEl =
+      document.getElementById("menu");
 
-    button.textContent = category;
 
-    button.addEventListener("click", () => {
+    /* اطلاعات غذاها */
+    let items = [];
 
-      currentCategory = category;
+    let currentCategory = "همه";
+
+
+    /*
+      داده آزمایشی
+
+      اگر Google Sheets موقتاً در دسترس نباشد،
+      سایت کاملاً خالی نمی‌ماند.
+    */
+    const demo = [
+      {
+        category: "خورشت",
+        name: "قورمه‌سبزی",
+        desc: "همراه برنج ایرانی",
+        price: "—",
+        image: "",
+        day: ""
+      },
+      {
+        category: "خورشت",
+        name: "قیمه",
+        desc: "همراه برنج ایرانی",
+        price: "—",
+        image: "",
+        day: ""
+      },
+      {
+        category: "چلو و غذا",
+        name: "کباب کوبیده",
+        desc: "دو سیخ کباب با برنج",
+        price: "—",
+        image: "",
+        day: ""
+      }
+    ];
+
+
+    /*
+      جلوگیری از خراب شدن HTML
+      اگر داخل شیت کاراکتر خاصی باشد.
+    */
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /*
+      ساخت دسته‌بندی‌ها
+    */
+    function renderCategories() {
+
+      const categories = [
+        "همه",
+        ...new Set(
+          items
+            .map(item => item.category)
+            .filter(Boolean)
+        )
+      ];
+
+
+      categoriesEl.innerHTML = "";
+
+
+      categories.forEach(category => {
+
+        const button =
+          document.createElement("button");
+
+        button.className =
+          "cat" +
+          (
+            category === currentCategory
+              ? " active"
+              : ""
+          );
+
+
+        button.textContent = category;
+
+
+        button.addEventListener(
+          "click",
+          function () {
+
+            currentCategory = category;
+
+            renderCategories();
+
+            renderMenu();
+
+          }
+        );
+
+
+        categoriesEl.appendChild(button);
+
+      });
+
+    }
+
+
+    /*
+      نمایش غذاها
+    */
+    function renderMenu() {
+
+      let filtered = items;
+
+
+      if (currentCategory !== "همه") {
+
+        filtered = items.filter(
+          item =>
+            item.category === currentCategory
+        );
+
+      }
+
+
+      if (!filtered.length) {
+
+        menuEl.innerHTML =
+          '<div class="empty">غذایی برای نمایش وجود ندارد.</div>';
+
+        return;
+
+      }
+
+
+      menuEl.innerHTML =
+        filtered
+          .map(item => {
+
+
+            let imageHTML;
+
+
+            /*
+              اگر لینک عکس در ستون E وجود داشته باشد،
+              عکس نمایش داده می‌شود.
+            */
+
+            if (item.image) {
+
+              imageHTML = `
+                <div class="photo">
+                  <img
+                    src="${escapeHTML(item.image)}"
+                    alt="${escapeHTML(item.name)}"
+                    onerror="this.style.display='none'; this.parentElement.textContent='🍽️';"
+                  >
+                </div>
+              `;
+
+            } else {
+
+              imageHTML = `
+                <div class="photo">
+                  🍽️
+                </div>
+              `;
+
+            }
+
+
+            return `
+              <article class="card">
+
+                ${imageHTML}
+
+                <div class="content">
+
+                  <h3>
+                    ${escapeHTML(item.name)}
+                  </h3>
+
+                  <div class="desc">
+                    ${escapeHTML(item.desc)}
+                  </div>
+
+                  <div class="info">
+
+                    <div class="price">
+                      ${escapeHTML(item.price)}
+                    </div>
+
+                    ${
+                      item.day
+                        ? `
+                          <div class="day">
+                            ${escapeHTML(item.day)}
+                          </div>
+                        `
+                        : ""
+                    }
+
+                  </div>
+
+                </div>
+
+              </article>
+            `;
+
+          })
+          .join("");
+
+    }
+
+
+    /*
+      دریافت اطلاعات از Google Sheets
+    */
+    async function loadMenu() {
+
+      try {
+
+        menuEl.innerHTML =
+          '<div class="loading">در حال دریافت منو...</div>';
+
+
+        const response =
+          await fetch(DATA_URL);
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "خطا در دریافت اطلاعات از Google Sheets"
+          );
+
+        }
+
+
+        const text =
+          await response.text();
+
+
+        /*
+          Google gviz پاسخ را به شکل
+          google.visualization.Query.setResponse(...)
+          می‌دهد.
+
+          این قسمت فقط JSON داخل پاسخ را جدا می‌کند.
+        */
+
+        const start =
+          text.indexOf("{");
+
+        const end =
+          text.lastIndexOf("}");
+
+
+        if (
+          start === -1 ||
+          end === -1
+        ) {
+
+          throw new Error(
+            "فرمت اطلاعات صحیح نیست"
+          );
+
+        }
+
+
+        const jsonText =
+          text.slice(
+            start,
+            end + 1
+          );
+
+
+        const data =
+          JSON.parse(jsonText);
+
+
+        /*
+          گرفتن ردیف‌های Sheet
+        */
+
+        const rows =
+          data.table &&
+          data.table.rows
+            ? data.table.rows
+            : [];
+
+
+        /*
+          تبدیل هر ردیف به یک غذا
+        */
+
+        items =
+          rows
+            .map(row => {
+
+              const cells =
+                (row.c || [])
+                  .map(cell =>
+                    cell &&
+                    cell.v != null
+                      ? cell.v
+                      : ""
+                  );
+
+
+              return {
+
+                category:
+                  cells[0] || "",
+
+                name:
+                  cells[1] || "",
+
+                desc:
+                  cells[2] || "",
+
+                price:
+                  cells[3] || "",
+
+                image:
+                  cells[4] || "",
+
+                day:
+                  cells[5] || ""
+
+              };
+
+            })
+
+
+            /*
+              ردیف‌های کاملاً خالی حذف می‌شوند.
+            */
+
+            .filter(item =>
+              item.category ||
+              item.name
+            );
+
+
+        /*
+          اگر هیچ غذایی از Sheet دریافت نشد،
+          داده آزمایشی نمایش داده می‌شود.
+        */
+
+        if (!items.length) {
+
+          items = demo;
+
+        }
+
+
+      } catch (error) {
+
+        console.error(
+          "Menu loading error:",
+          error
+        );
+
+
+        /*
+          اگر دریافت از Google Sheets
+          به هر دلیلی شکست خورد.
+        */
+
+        items = demo;
+
+      }
+
+
+      /*
+        نمایش نهایی
+      */
 
       renderCategories();
+
       renderMenu();
 
-    });
+    }
 
-    categoriesEl.appendChild(button);
 
-  });
-}
+    /*
+      شروع دریافت منو
+    */
 
-function renderMenu(){
+    loadMenu();
 
-  let filtered = items;
+  </script>
 
-  if(currentCategory !== "همه"){
-    filtered = items.filter(
-      item => item.category === currentCategory
-    );
-  }
-
-  if(!filtered.length){
-
-    menuEl.innerHTML =
-      '<div class="empty">غذایی برای نمایش وجود ندارد.</div>';
-
-    return;
-  }
-
-  menuEl.innerHTML = filtered.map(item => {
-
-    const image = item.image
-      ? `
-        <div class="photo">
-          <img
-            src="${escapeHTML(item.image)}"
-            alt="${escapeHTML(item.name)}"
-            onerror="this.parentElement.innerHTML='🍽️'"
-          >
-        </div>
-      `
-      : `
-        <div class="photo">🍽️</div>
+</body>
+</html>
